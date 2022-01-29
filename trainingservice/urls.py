@@ -5,6 +5,7 @@ from trainingservice import views
 
 router = DefaultRouter()
 router.register('trainigcenter', views.TrainingCenerViewSet)
+router.register('trade', views.TradeViewSet)
 
 
 urlpatterns = [
