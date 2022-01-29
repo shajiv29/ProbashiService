@@ -18,17 +18,14 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from pdoservice import views
 
-router = DefaultRouter()
-router.register('students', views.StudentViewSets)
-router.register('pdo', views.PDOViewSets)
-router.register('country', views.CountryViewSets)
-router.register('payment', views.PaymentViewSets)
-router.register('batch', views.BatchViewSet)
+#
+# router.register('training', views.TrainingCenerViewSet)
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('probashiservice/', include(router.urls) ),
+    path('probashiservice/api/v1/pdo/', include('pdoservice.urls') ),
+    path('probashiservice/api/v1/training/', include('pdoservice.urls') ),
     # path('probashiservice/', include(router.urls)),
 ]
