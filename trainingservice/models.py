@@ -28,3 +28,12 @@ class TrainingCenter(models.Model):
     def save(self, *args, **kwargs):
         self.center_slug = slugify(self.center_name)
         super(TrainingCenter, self).save(*args, **kwargs)
+
+class Trade(models.Model):
+    trade_id = models.AutoField(primary_key=True)
+    trade_name = models.CharField(max_length=50)
+    trade_slug = models.SlugField(unique=True, null=True)
+    is_active = models.NullBooleanField(default=False)
+    is_delete = models.NullBooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    modified = models.DateTimeField(auto_now_add=True, null=True)
