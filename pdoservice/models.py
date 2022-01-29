@@ -24,9 +24,6 @@ class Batch(models.Model):
         self.batch_slug = slugify(self.batch_name)
         super(Batch, self).save(*args, **kwargs)
 
-    def __str__(self):
-        return self.batch_id + self.batch_name + self.is_active
-
 
 class Student(models.Model):
     student_id = models.AutoField(primary_key=True)
