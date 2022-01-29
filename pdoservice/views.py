@@ -20,7 +20,7 @@ class CountryViewSets(viewsets.ModelViewSet):
     queryset=Country.objects.all()
     serializer_class=CountrySerializer
 
-class BatchViewSets(viewsets.ModelViewSet):
+class BatchViewSet(viewsets.ModelViewSet):
     queryset=Batch.objects.all()
     serializer_class=BatchSerializer
 
