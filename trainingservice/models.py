@@ -37,3 +37,7 @@ class Trade(models.Model):
     is_delete = models.NullBooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True, null=True)
     modified = models.DateTimeField(auto_now_add=True, null=True)
+
+    def save(self, *args, **kwargs):
+        self.trade_slug = slugify(self.trade_name)
+        super(Trade, self).save(*args, **kwargs)
