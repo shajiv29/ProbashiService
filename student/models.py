@@ -78,3 +78,39 @@ class PermanentAddress(models.Model):
     house_no = models.CharField(max_length=20)
     zip_code = models.CharField(max_length=20)
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
+
+class Division(models.Model):
+    id = models.AutoField(primary_key=True)
+    division_name = models.CharField(max_length=20)
+    is_active = models.NullBooleanField(default=False)
+    is_delete = models.NullBooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    modified = models.DateTimeField(auto_now_add=True, null=True)
+
+class District(models.Model):
+    id = models.AutoField(primary_key=True)
+    district_name = models.CharField(max_length=20)
+    division = models.ForeignKey(Division, on_delete=models.CASCADE)
+    is_active = models.NullBooleanField(default=False)
+    is_delete = models.NullBooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    modified = models.DateTimeField(auto_now_add=True, null=True)
+
+
+class Upazila(models.Model):
+    id=models.AutoField(primary_key=True)
+    upazila_name = models.CharField(max_length=20)
+    district = models.ForeignKey(District, on_delete=models.CASCADE)
+    is_active = models.NullBooleanField(default=False)
+    is_delete = models.NullBooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    modified = models.DateTimeField(auto_now_add=True, null=True)
+
+class Thana(models.Model):
+    id = models.AutoField(primary_key=True)
+    thana_name = models.CharField(max_length=20)
+    upazila = models.ForeignKey(Upazila, on_delete=models.CASCADE)
+    is_active = models.NullBooleanField(default=False)
+    is_delete = models.NullBooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    modified = models.DateTimeField(auto_now_add=True, null=True)
