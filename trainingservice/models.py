@@ -41,3 +41,43 @@ class Trade(models.Model):
     def save(self, *args, **kwargs):
         self.trade_slug = slugify(self.trade_name)
         super(Trade, self).save(*args, **kwargs)
+
+
+# class AssignTrade(models.Model):
+#     assign_trade_id = models.AutoField(primary_key=True)
+#     assign_ttc = models.ForeignKey(TrainingCenter, on_delete=models.CASCADE)
+#     assign_trade = models.ForeignKey(Trade, on_delete=models.CASCADE)
+#     is_active = models.NullBooleanField(default=True)
+#     is_delete = models.NullBooleanField(default=False)
+#     created = models.DateTimeField(auto_now_add=True, null=True)
+#     modified = models.DateTimeField(auto_now_add=True, null=True)
+
+
+class Session(models.Model):
+    session_id = models.AutoField(primary_key=True)
+    session_start_date = models.DateField()
+    session_end_date = models.DateField()
+    session_capacity = models.IntegerField(null=True, blank=True)
+    interview_date = models.DateField()
+    application_last_date = models.DateField()
+    interview_result_date = models.DateField()
+    trade = models.ForeignKey(Trade, on_delete=models.CASCADE)
+    is_active = models.NullBooleanField(default=True)
+    is_delete = models.NullBooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    modified = models.DateTimeField(auto_now_add=True, null=True)
+
+
+class TradeAssign(models.Model):
+    assign_training_center = models.ForeignKey(TrainingCenter, on_delete=models.CASCADE)
+    assign_trade = models.ForeignKey(Trade, on_delete=models.CASCADE)
+    is_active = models.NullBooleanField(default=True)
+    is_delete = models.NullBooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    modified = models.DateTimeField(auto_now_add=True, null=True)
+
+class Batch(models.Model):
+    batch_id = models.AutoField(primary_key=True)
+    batch_name = models.CharField(max_length=20)
+    batch_size = models.IntegerField()
+    class_start_date = models.DateField()
