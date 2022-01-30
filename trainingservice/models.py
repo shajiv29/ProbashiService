@@ -81,3 +81,8 @@ class Batch(models.Model):
     batch_name = models.CharField(max_length=20)
     batch_size = models.IntegerField()
     class_start_date = models.DateField()
+    trade_assign = models.ForeignKey(TradeAssign, on_delete=models.CASCADE)
+    is_active = models.NullBooleanField(default=True)
+    is_delete = models.NullBooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    modified = models.DateTimeField(auto_now_add=True, null=True)
