@@ -27,5 +27,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('probashiservice/api/v1/pdo/', include('pdoservice.urls') ),
     path('probashiservice/api/v1/training/', include('trainingservice.urls') ),
+    path('probashiservice/api/v1/student/', include('student.urls'))
     # path('probashiservice/', include(router.urls)),
 ]
