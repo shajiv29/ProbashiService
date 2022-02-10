@@ -41,9 +41,14 @@ INSTALLED_APPS = [
     'pdoservice',
     'trainingservice',
     'student',
+    'corsheaders',
 ]
 
+# corsheaders add for issue fixing
+
 MIDDLEWARE = [
+'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -112,6 +117,17 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000',
+# ]
+
+# CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
+# CORS_ALLOW_CREDENTIALS = True
+#
+# CORS_ALLOWED_ORIGIN_REGEXES = [
+#     'http://localhost:3000',
+# ]
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -122,6 +138,29 @@ USE_L10N = True
 
 USE_TZ = True
 
+CORS_ORIGIN_ALLOW_ALL=True
+
+# CORS_ALLOWED_ORIGINS = [
+#     'http://google.com',
+#     'http://hostname.example.com',
+#     'http://localhost:8000',
+#     'http://127.0.0.1:3000',
+# ]
+
+
+# CORS_ORIGIN_ALLOW_ALL = False
+#
+# CORS_ORIGIN_WHITELIST = (
+#     'http://127.0.0.1:3000',
+# )
+
+
+# CORS_ALLOWED_ORIGINS = [
+#         'http://127.0.0.1:3000/',
+#     ]
+
+# ALLOWED_HOSTS=['*']
+# CROS_ORIGIN_ALLOW_ALL = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
